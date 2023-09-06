@@ -29,8 +29,7 @@ Then try using the client to access your hidden SSH server.
 
 ### Example
 
-Using the OpenSSH service as a jumphost. You first need to set `AllowTcpForwarding yes` inside `/etc/ssh/sshd_conf` within the `ssh_server`
-The OpenSSH configuration is persisted within a Docker volume by default.
+Using the OpenSSH service as a jumphost. You first need to set `AllowTcpForwarding yes` inside `/etc/ssh/sshd_conf` within the `ssh_server` container. The configuration is persisted within a Docker volume by default.
 
 ```bash
 docker compose -f client.docker-compose.yml run -it --rm ssh_client -J user@<hidden_service_hostname>.onion:2222 root@<internal_host>.local
