@@ -13,4 +13,4 @@ COPY ./init.sh /root/init.sh
 RUN mkdir -p /var/lib/tor && \
     chown -R root:root /var/lib/tor
 
-ENTRYPOINT /root/init.sh
+ENTRYPOINT ["/bin/sh", "/root/init.sh"]
