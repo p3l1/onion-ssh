@@ -27,8 +27,13 @@ docker compose -f client.docker-compose.yml up -d --build
 Wait a few seconds until the proxy has established a connection to the tor network. Check the logs if necessary.
 Then try using the client to access your hidden SSH server.
 
+### Example
+
+Using the OpenSSH service as a jumphost. You first need to set `AllowTcpForwarding yes` inside `/etc/ssh/sshd_conf` within the `ssh_server`
+The OpenSSH configuration is persisted within a Docker volume by default.
+
 ```bash
-docker compose -f client.docker-compose.yml run -it ssh_client
+docker compose -f client.docker-compose.yml run -it --rm ssh_client -J user@<hidden_service_hostname>.onion:2222 root@<internal_host>.local
 ```
 
 After a few seconds you will be prompted to accept the SSH fingerprint
