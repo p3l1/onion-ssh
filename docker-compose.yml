@@ -3,7 +3,6 @@ services:
   tor_service:
     image: p3l1/onion-ssh
     build: ./server
-    pull_policy: build
     volumes:
       - hostname:/var/lib/tor/hidden_service
 

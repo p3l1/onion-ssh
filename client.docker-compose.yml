@@ -3,7 +3,6 @@ services:
   ssh_client:
     image: p3l1/onion-ssh-client
     build: ./client
-    pull_policy: build
     environment:
       - USER_NAME=p3l1
       - ONION_ADDRESS=${ONION_ADDRESS}
