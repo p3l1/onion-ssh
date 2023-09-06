@@ -1,0 +1,25 @@
+version: '3'
+services:
+  tor_service:
+    image: p3l1/onion-ssh
+    build: ./server
+    volumes:
+      - hostname:/var/lib/tor/hidden_service
+
+  ssh_server:
+    image: lscr.io/linuxserver/openssh-server:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+      - PUBLIC_KEY_URL=https://github.com/p3l1.keys
+      - SUDO_ACCESS=false #optional
+      - PASSWORD_ACCESS=false #optional
+      - USER_NAME=p3l1
+    volumes:
+      - ssh_config:/config
+    restart: unless-stopped
+
+volumes:
+  ssh_config:
+  hostname:

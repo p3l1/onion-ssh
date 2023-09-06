@@ -1,0 +1,15 @@
+version: '3'
+services:
+  ssh_client:
+    image: p3l1/onion-ssh-client
+    build: ./client
+    # entrypoint: ["sleep", "9999"]
+    environment:
+      - USER_NAME=p3l1
+      - ONION_ADDRESS=${ONION_ADDRESS}
+    volumes:
+      - ${HOME}/.ssh:/root/.ssh:ro
+
+  tor_proxy:
+    image: avpnusr/torprivoxy:latest
+    restart: unless-stopped
