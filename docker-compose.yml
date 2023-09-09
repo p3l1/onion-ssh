@@ -9,9 +9,14 @@ services:
   ssh_server:
     image: lscr.io/linuxserver/openssh-server:latest
     environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=Europe/Berlin
       - PUBLIC_KEY_URL=https://github.com/p3l1.keys
       - PASSWORD_ACCESS=false
+      - USER_NAME=${USER_NAME}
+      - USER_PASSWORD=${USER_PASSWORD}
+      - SUDO_ACCESS=${SUDO_ACCESS}
     volumes:
       - ssh_config:/config
     restart: unless-stopped
