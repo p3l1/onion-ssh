@@ -9,11 +9,10 @@ services:
   ssh_server:
     image: lscr.io/linuxserver/openssh-server:latest
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1337
+      - PGID=1337
       - TZ=Europe/Berlin
       - PUBLIC_KEY_URL=https://github.com/p3l1.keys
-      - SUDO_ACCESS=false #optional
       - PASSWORD_ACCESS=false #optional
       - USER_NAME=p3l1
     volumes:
